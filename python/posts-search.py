@@ -1,5 +1,5 @@
-""" send GET requests to /posts/search on Sharpr's API using the pagination
-    feature; usage `python3 posts-search-paginate.py` """
+""" send basic GET request to /posts/search to return the 25 most-recent results; 
+        usage `python3 posts-search.py` """
 
 import requests as r # `pip install requests`
 from requests.auth import HTTPBasicAuth
@@ -9,18 +9,18 @@ API_USER = '[ enter api user here ]'
 API_PASSWORD = '[ enter api password here ]'
 
 # API params
-LIMIT = 100
+LIMIT = 40
 
 def crunch_data(record):
     # do something with this post...
     # record details available as `record['id']`
     pass
-
+    
 def get_posts(url):
     response = r.get(
         url,
-        # `order_by` param is required to get the API-Next-Page header
-        params={'order_by': 'created', 'limit': LIMIT},
+        # add any params here
+        params={'limit': LIMIT},
         # this handles the base64encoding for you
         auth=HTTPBasicAuth(API_USER, API_PASSWORD)
     )
@@ -48,16 +48,6 @@ def get_posts(url):
             print('API returned {0} records.'.format(result_count))
             for record in response.json():
                 crunch_data(record)
-
-            # once we've saved all records from previous call, we can get the
-            ## next set of records. The value of the API-Next-Page header is a
-            ## URL that we can use to make the next call.
-            if 'API-Next-Page' in response.headers and result_count == LIMIT:
-                get_posts(response.headers['API-Next-Page'])
-            else:
-                # if we don't have that header or if the API returned fewer
-                ## results than we asked for, then we're done.
-                print('No more records available for this search.')
         except ValueError as e:
             # If we are here, then response.json() is empty. That means there
             ## are no records that match our query.
