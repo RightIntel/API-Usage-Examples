@@ -5,8 +5,8 @@ import requests as r # `pip install requests`
 from requests.auth import HTTPBasicAuth
 
 # credentials
-API_USER = '9Jw4hqZcM5sCj7hQCZmP'
-API_PASSWORD = 'FTvfrjYxhJMJyV9zfjw3XTTyl6v2NWq2TkZDHD9g'
+API_USER = '[enter user name here ]'
+API_PASSWORD = '[ enter password here ]'
 
 # API params
 LIMIT = 100
