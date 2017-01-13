@@ -5,8 +5,8 @@ import requests as r # `pip install requests`
 from requests.auth import HTTPBasicAuth
 
 # credentials
-API_USER = '[ enter api user here ]'
-API_PASSWORD = '[ enter api password here ]'
+API_USER = '9Jw4hqZcM5sCj7hQCZmP'
+API_PASSWORD = 'FTvfrjYxhJMJyV9zfjw3XTTyl6v2NWq2TkZDHD9g'
 
 # API params
 LIMIT = 100
@@ -28,7 +28,7 @@ def get_posts(url):
     # check response code to make sure request was successful
     if response.status_code != 200:
         print('Error fetching posts from {0}. Server responded with status {1}.'
-                    .format(full_url, response.status_code))
+                    .format(url, response.status_code))
         
         # See https://sharpr.com/developers/rest/overview/request for details
         ## on the API-Response-Errors header.
