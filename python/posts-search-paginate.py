@@ -5,7 +5,7 @@ import requests as r # `pip install requests`
 from requests.auth import HTTPBasicAuth
 
 # credentials
-API_USER = '[enter user name here ]'
+API_USER = '[ enter user name here ]'
 API_PASSWORD = '[ enter password here ]'
 
 # API params
@@ -53,6 +53,7 @@ def get_posts(url):
             ## next set of records. The value of the API-Next-Page header is a
             ## URL that we can use to make the next call.
             if 'API-Next-Page' in response.headers and result_count == LIMIT:
+                print('Going to get this page next: {0}'.format(response.headers['API-Next-Page']))
                 get_posts(response.headers['API-Next-Page'])
             else:
                 # if we don't have that header or if the API returned fewer
