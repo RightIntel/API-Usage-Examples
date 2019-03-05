@@ -66,4 +66,4 @@ def get_posts(url):
 
 
 if __name__ == '__main__':
-    get_posts('https://sharpr.com/api/v2/posts/search')
+    get_posts('https://sharpr.com/api/v3/posts/search')
