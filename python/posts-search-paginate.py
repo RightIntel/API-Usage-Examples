@@ -9,7 +9,7 @@ API_USER = '[ enter user name here ]'
 API_PASSWORD = '[ enter password here ]'
 
 # API params
-LIMIT = 100
+LIMIT = 25
 
 def crunch_data(record):
     # do something with this post...
